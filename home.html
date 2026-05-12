@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MINI PLANT SHOP - Home</title>
+
+  <!-- style.css -->
+   <link rel="stylesheet" href="style/style.css">
+   
+  <!-- Tailwindcss + daisyUI -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+  <!-- fontawsome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+</head>
+
+<body class="bg-[#285A43] min-h-screen flex flex-col md:flex-row">
+
+  <!-- Left Sidebar -->
+  <section class="w-full md:w-2/12 bg-[#285A43] md:min-h-screen">
+    <nav>
+      <h2 class="mx-5 my-6 font-bold text-2xl text-white">MINI PLANT SHOP</h2>
+      <ul class="space-y-2">
+        <li>
+          <a href="home.html" class="block ml-2 p-3 text-white hover:bg-white hover:text-green-800 rounded-l-full flex items-center gap-3 active">
+            <i class="fa-regular fa-house"></i> Home
+          </a>
+        </li>
+        <li>
+          <a href="delivery.html" class="block ml-2 p-3 text-white hover:bg-white hover:text-green-800 rounded-l-full flex items-center gap-3">
+            <i class="fa-solid fa-truck-fast"></i> Delivery
+          </a>
+        </li>
+        <li>
+          <a href="catalog.html" class="block ml-2 p-3 text-white hover:bg-white hover:text-green-800 rounded-l-full flex items-center gap-3">
+            <i class="fa-regular fa-rectangle-list"></i> Catalog
+          </a>
+        </li>
+        <li>
+          <a href="cart.html" class="block ml-2 p-3 text-white hover:bg-white hover:text-green-800 rounded-l-full flex items-center gap-3">
+            <i class="fa-solid fa-cart-arrow-down"></i> Cart
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </section>
+
+  <!-- Right Side -->
+  <section class="w-full md:w-10/12 bg-white md:rounded-3xl md:mr-2 md:my-2 overflow-hidden flex flex-col min-h-screen md:min-h-0">
+
+    <!-- Top Search Bar -->
+    <div class="flex items-center justify-between px-4 py-3 border-b">
+      <label class="input rounded-full m-2 md:m-0 w-[75%] md:w-[80%] h-[35px] flex-1 max-w-md">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="search" placeholder="Search" />
+      </label>
+      <i class="fa-solid fa-user text-2xl mr-2 md:mr-4"></i>
+    </div>
+
+
+    <div class="flex-1 overflow-auto p-4 md:p-6">
+
+      <!-- Hero Section -->
+      <div class="hero w-full h-auto md:h-5/12 flex flex-col md:flex-row justify-between rounded-3xl bg-gradient-to-r from-[#8CCE6C] via-[#477D50] to-[#285A43]">
+        <div class="hero-info p-6 md:p-8">
+          <h1 class="hero-title m-0 text-2xl md:text-3xl font-extrabold text-white">Buy your <br>dream plants.</h1>
+          <div class="hero-info flex gap-6 mt-6">
+            <div>
+              <h1 class="text-2xl font-medium">50+</h1>
+              <p class="text-sm font-medium">Plant Species</p>
+            </div>
+            <div>
+              <h1 class="text-2xl font-medium">1M+</h1>
+              <p class="text-sm font-medium">Customers</p>
+            </div>
+          </div>
+        </div>
+        <img src="asset/top.png" alt="Plant Image" class="hero-image w-[280px] md:w-[300px] h-[180px] md:h-[150px] object-contain self-end md:self-auto" />
+      </div>
+
+      <!-- Feature Cards -->
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="card-1 p-5 bg-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 text-center">
+          <div class="w-12 h-12 bg-[#B4E0A0] rounded-full flex items-center justify-center mx-auto">
+            <img src="asset/Vector.png" class="w-6 h-6" />
+          </div>
+          <h2 class="text-md font-bold mt-3">Fast Shipping</h2>
+          <p class="text-[13px] text-gray-500 mt-1">4-day delivery time and an expedited delivery option.</p>
+        </div>
+
+        <div class="card-2 p-5 bg-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 text-center">
+          <div class="w-12 h-12 bg-[#B4E0A0] rounded-full flex items-center justify-center mx-auto">
+            <img src="asset/Vector2.png" class="w-6 h-6" />
+          </div>
+          <h2 class="text-md font-bold mt-3">Fern-tastic Selection</h2>
+          <p class="text-[13px] text-gray-500 mt-1">Many different species and variations in each category.</p>
+        </div>
+
+        <div class="card-3 p-5 bg-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 text-center">
+          <div class="w-12 h-12 bg-[#B4E0A0] rounded-full flex items-center justify-center mx-auto">
+            <img src="asset/Vector3.png" class="w-6 h-6" />
+          </div>
+          <h2 class="text-md font-bold mt-3">24/5 Support</h2>
+          <p class="text-[13px] text-gray-500 mt-1">We can answer your plant related questions, kinda.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</body>
+</html>

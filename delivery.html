@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>MINI PLANT SHOP</title>
+
+  <!-- style.css -->
+   <link rel="stylesheet" href="style/style.css">
+
+  <!-- Tailwind + daisyUI -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+</head>
+
+<body class="bg-[#285A43] min-h-screen flex flex-col md:flex-row">
+
+  <!-- Left Sidebar -->
+  <section class="w-full md:w-2/12 bg-[#285A43]">
+
+    <nav>
+      <h2 class="mx-5 my-6 font-bold text-xl md:text-2xl text-white">
+        MINI PLANT SHOP
+      </h2>
+
+      <ul class="space-y-2 pb-4">
+
+        <li>
+          <a href="home.html"
+            class="block ml-2 p-2 text-white hover:bg-white hover:text-green-800 rounded-l-full">
+            <i class="fa-regular fa-house mr-2"></i>
+            Home
+          </a>
+        </li>
+
+        <li>
+          <a href="delivery.html"
+            class="block ml-2 p-2 text-white hover:bg-white hover:text-green-800 rounded-l-full">
+            <i class="fa-solid fa-truck-fast mr-2"></i>
+            Delivery
+          </a>
+        </li>
+
+        <li>
+          <a href="catalog.html"
+            class="block ml-2 p-2 text-white hover:bg-white hover:text-green-800 rounded-l-full">
+            <i class="fa-regular fa-rectangle-list mr-2"></i>
+            Catalog
+          </a>
+        </li>
+
+        <li>
+          <a href="cart.html"
+            class="block ml-2 p-2 text-white hover:bg-white hover:text-green-800 rounded-l-full">
+            <i class="fa-solid fa-cart-arrow-down mr-2"></i>
+            Cart
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+  </section>
+
+  <!-- Right Side -->
+  <section class="w-full md:w-10/12 h-auto md:h-[calc(100vh-24px)] bg-white my-2 md:mr-2 rounded-3xl overflow-hidden p-2 md:p-0">
+
+    <!-- Top Search -->
+    <div class="flex items-center justify-between px-2 md:px-0">
+
+      <label class="input rounded-full m-2 md:m-4 w-[75%] md:w-[80%] h-[35px]">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input type="search" placeholder="Search" class="w-full" />
+
+      </label>
+
+      <i class="fa-solid fa-user text-xl md:text-2xl mr-2 md:mr-4"></i>
+
+    </div>
+
+    <!-- Hero Section -->
+    <div
+      class="hero w-[95%] md:w-full mx-auto h-auto md:h-5/12 flex flex-col md:flex-row justify-between rounded-2xl md:rounded-l-4xl ml-0 md:ml-4 bg-gradient-to-r from-[#8CCE6C] via-[#477D50] to-[#285A43]">
+
+      <div class="hero-info">
+
+        <h1 class="hero-title m-0 pl-4 text-2xl md:text-3xl font-extrabold text-white">
+          Delivery<br>anywhere
+        </h1>
+
+        <div>
+
+          <label class="input m-4 w-[90%] md:w-[80%] h-[40px]">
+
+            <input
+              type="text"
+              placeholder="Enter Your Address"
+              onfocus="this.type='datetime-local'"
+              onblur="if(!this.value)this.type='text'" />
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+          </label>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</body>
+
+</html>

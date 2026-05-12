@@ -1,0 +1,12 @@
+
+.nav-link{
+    transition : all 0.3s ease;
+
+}
+
+.nav-link.active{
+    background-color: white;
+    color: #2f855a;
+    font-weight: 600px;
+    border-radius: 9999px 0 0 9999px;
+}

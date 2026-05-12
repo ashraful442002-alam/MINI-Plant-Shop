@@ -5,15 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MINI PLANT SHOP - Catalog</title>
 
-  <!-- style.css -->
   <link rel="stylesheet" href="style/style.css">
-
-  <!-- Tailwindcss + daisyUI -->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-  <!-- fontawesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+
+  <style>
+    /* Toast notification - shudhu notai niye, kono layout change na */
+    #toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(30px);
+      background: #285A43;
+      color: #fff;
+      padding: 10px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 15px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 9999;
+      box-shadow: 0 4px 18px rgba(40,90,67,0.25);
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    /* No-result message */
+    #no-result {
+      display: none;
+      grid-column: 1 / -1;
+      text-align: center;
+      color: #888;
+      padding: 32px 0;
+      font-size: 16px;
+    }
+  </style>
 </head>
 
 <body class="bg-[#285A43] min-h-screen flex flex-col md:flex-row">
@@ -34,14 +63,18 @@
           </a>
         </li>
         <li>
-          <a href="catalog.html" class="block ml-2 p-3 text-white hover:bg-white hover:text-green-800 rounded-l-full flex items-center gap-3 active">
+          <a href="catalog.html" class="block ml-2 p-3 bg-white text-[#285A43] rounded-l-full flex items-center gap-3 font-semibold">
             <i class="fa-regular fa-rectangle-list"></i> Catalog
           </a>
         </li>
-        <li>
+        <!-- Cart with badge -->
+        <li class="relative">
           <a href="cart.html" class="block ml-2 p-3 text-white hover:bg-white hover:text-green-800 rounded-l-full flex items-center gap-3">
             <i class="fa-solid fa-cart-arrow-down"></i> Cart
-            <span id="cart-badge" class="ml-auto bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+            <span id="cart-badge"
+              style="display:none; position:absolute; top:4px; right:10px; background:#ef4444; color:#fff; font-size:11px; font-weight:700; width:20px; height:20px; border-radius:50%; align-items:center; justify-content:center;">
+              0
+            </span>
           </a>
         </li>
       </ul>
@@ -52,133 +85,112 @@
   <section class="w-full md:w-10/12 bg-white md:rounded-3xl md:mr-2 md:my-2 overflow-hidden flex flex-col min-h-screen md:min-h-0">
 
     <!-- Top Search Bar -->
-    <div class="flex items-center justify-between px-4 py-3 relative">
+    <div class="flex items-center justify-between px-4 py-3 ">
       <label class="input rounded-full m-2 md:m-0 w-[75%] md:w-[80%] h-[35px] flex-1 max-w-md">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input id="search-input" type="search" placeholder="Search" autocomplete="off" />
+        <input id="search-input" type="search" placeholder="Search plants..." />
       </label>
       <i class="fa-solid fa-user text-2xl mr-2 md:mr-4"></i>
-
-      <!-- Search Dropdown -->
-      <div id="search-results" class="hidden absolute top-[60px] left-4 right-16 bg-white border border-gray-200 rounded-2xl shadow-xl z-50 max-h-72 overflow-y-auto"></div>
     </div>
 
     <!-- Plant Grid -->
     <div id="plant-grid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 overflow-y-auto overflow-x-hidden p-4 md:p-6">
 
-      <!-- Snake Plant -->
-      <div class="plant-card bg-base-100 w-full shadow-sm rounded-2xl"
-           data-id="1" data-name="Snake Plant" data-price="12.00" data-img="asset/snakplant.jpg">
+      <!-- Card 1 -->
+      <div class="plant-card bg-base-100 w-full shadow-sm rounded-2xl" data-id="1" data-name="Snake Plant">
         <figure>
-          <img class="h-48 w-full object-cover rounded-xl"
-               src="asset/snakplant.jpg" alt="Snake Plant"
-               onerror="this.src='https://placehold.co/400x200/B4E0A0/285A43?text=🌿'" />
+          <img class="h-48 w-full object-cover rounded-xl" src="asset/snakplant.jpg" alt="Snake Plant" />
         </figure>
         <div class="card-body">
           <h2 class="card-title">Snake Plant</h2>
-          <p>Price: <span class="font-semibold text-[#285A43]">$12.00</span></p>
+          <p class="text-sm text-gray-600">Price: <span class="font-semibold text-[#285A43]">$12.00</span></p>
           <div class="card-actions justify-end">
-            <button class="btn btn-primary buy-btn">Buy Now</button>
+            <button class="btn btn-primary buy-btn" data-id="1">Buy Now</button>
           </div>
         </div>
       </div>
 
-      <!-- Aloe Vera -->
-      <div class="plant-card bg-base-100 w-full shadow-sm rounded-2xl"
-           data-id="2" data-name="Aloe Vera" data-price="8.00" data-img="asset/alovera.jpg">
+      <!-- Card 2 -->
+      <div class="plant-card bg-base-100 w-full shadow-sm rounded-2xl" data-id="2" data-name="Aloe Vera">
         <figure>
-          <img class="h-48 w-full object-cover rounded-xl"
-               src="asset/alovera.jpg" alt="Aloe Vera"
-               onerror="this.src='https://placehold.co/400x200/B4E0A0/285A43?text=🌿'" />
+          <img class="h-48 w-full object-cover rounded-xl" src="asset/alovera.jpg" alt="Aloe Vera" />
         </figure>
         <div class="card-body">
           <h2 class="card-title">Aloe Vera</h2>
-          <p>Price: <span class="font-semibold text-[#285A43]">$8.00</span></p>
+          <p class="text-sm text-gray-600">Price: <span class="font-semibold text-[#285A43]">$8.00</span></p>
           <div class="card-actions justify-end">
-            <button class="btn btn-primary buy-btn">Buy Now</button>
+            <button class="btn btn-primary buy-btn" data-id="2">Buy Now</button>
           </div>
         </div>
       </div>
 
-      <!-- Jude Plant -->
-      <div class="plant-card bg-base-100 w-full shadow-sm rounded-2xl"
-           data-id="3" data-name="Jude Plant" data-price="15.00" data-img="asset/judeplant.jpg">
+      <!-- Card 3 -->
+      <div class="plant-card bg-base-100 w-full shadow-sm rounded-2xl" data-id="3" data-name="Jude Plant">
         <figure>
-          <img class="h-48 w-full object-cover rounded-xl"
-               src="asset/judeplant.jpg" alt="Jude Plant"
-               onerror="this.src='https://placehold.co/400x200/B4E0A0/285A43?text=🌿'" />
+          <img class="h-48 w-full object-cover rounded-xl" src="asset/judeplant.jpg" alt="Jude Plant" />
         </figure>
         <div class="card-body">
           <h2 class="card-title">Jude Plant</h2>
-          <p>Price: <span class="font-semibold text-[#285A43]">$15.00</span></p>
+          <p class="text-sm text-gray-600">Price: <span class="font-semibold text-[#285A43]">$15.00</span></p>
           <div class="card-actions justify-end">
-            <button class="btn btn-primary buy-btn">Buy Now</button>
+            <button class="btn btn-primary buy-btn" data-id="3">Buy Now</button>
           </div>
         </div>
       </div>
 
-      <!-- Lily Plant -->
-      <div class="plant-card bg-base-100 w-full shadow-sm rounded-2xl"
-           data-id="4" data-name="Lily Plant" data-price="10.00" data-img="asset/lily.jpg">
+      <!-- Card 4 -->
+      <div class="plant-card bg-base-100 w-full shadow-sm rounded-2xl" data-id="4" data-name="Lily Plant">
         <figure>
-          <img class="h-48 w-full object-cover rounded-xl"
-               src="asset/lily.jpg" alt="Lily Plant"
-               onerror="this.src='https://placehold.co/400x200/B4E0A0/285A43?text=🌿'" />
+          <img class="h-48 w-full object-cover rounded-xl" src="asset/lily.jpg" alt="Lily Plant" />
         </figure>
         <div class="card-body">
           <h2 class="card-title">Lily Plant</h2>
-          <p>Price: <span class="font-semibold text-[#285A43]">$10.00</span></p>
+          <p class="text-sm text-gray-600">Price: <span class="font-semibold text-[#285A43]">$10.00</span></p>
           <div class="card-actions justify-end">
-            <button class="btn btn-primary buy-btn">Buy Now</button>
+            <button class="btn btn-primary buy-btn" data-id="4">Buy Now</button>
           </div>
         </div>
       </div>
 
-      <!-- Spider Plant -->
-      <div class="plant-card bg-base-100 w-full shadow-sm rounded-2xl"
-           data-id="5" data-name="Spider Plant" data-price="9.00" data-img="asset/spider.jpg">
+      <!-- Card 5 -->
+      <div class="plant-card bg-base-100 w-full shadow-sm rounded-2xl" data-id="5" data-name="Spider Plant">
         <figure>
-          <img class="h-48 w-full object-cover rounded-xl"
-               src="asset/spider.jpg" alt="Spider Plant"
-               onerror="this.src='https://placehold.co/400x200/B4E0A0/285A43?text=🌿'" />
+          <img class="h-48 w-full object-cover rounded-xl" src="asset/spider.jpg" alt="Spider Plant" />
         </figure>
         <div class="card-body">
           <h2 class="card-title">Spider Plant</h2>
-          <p>Price: <span class="font-semibold text-[#285A43]">$9.00</span></p>
+          <p class="text-sm text-gray-600">Price: <span class="font-semibold text-[#285A43]">$9.00</span></p>
           <div class="card-actions justify-end">
-            <button class="btn btn-primary buy-btn">Buy Now</button>
+            <button class="btn btn-primary buy-btn" data-id="5">Buy Now</button>
           </div>
         </div>
       </div>
 
-      <!-- Monstera Plant -->
-      <div class="plant-card bg-base-100 w-full shadow-sm rounded-2xl"
-           data-id="6" data-name="Monstera Plant" data-price="20.00" data-img="asset/monstera.jpeg">
+      <!-- Card 6 -->
+      <div class="plant-card bg-base-100 w-full shadow-sm rounded-2xl" data-id="6" data-name="Monstera Plant">
         <figure>
-          <img class="h-48 w-full object-cover rounded-xl"
-               src="asset/monstera.jpeg" alt="Monstera Plant"
-               onerror="this.src='https://placehold.co/400x200/B4E0A0/285A43?text=🌿'" />
+          <img class="h-48 w-full object-cover rounded-xl" src="asset/monstera.jpeg" alt="Monstera Plant" />
         </figure>
         <div class="card-body">
           <h2 class="card-title">Monstera Plant</h2>
-          <p>Price: <span class="font-semibold text-[#285A43]">$20.00</span></p>
+          <p class="text-sm text-gray-600">Price: <span class="font-semibold text-[#285A43]">$20.00</span></p>
           <div class="card-actions justify-end">
-            <button class="btn btn-primary buy-btn">Buy Now</button>
+            <button class="btn btn-primary buy-btn" data-id="6">Buy Now</button>
           </div>
         </div>
       </div>
 
-    </div>
+      <!-- No Result Message -->
+      <div id="no-result">
+        <i class="fa-regular fa-circle-xmark text-3xl mb-2 text-gray-400"></i>
+        <p>No plants found. Try another name!</p>
+      </div>
 
-    <!-- No Results Message (hidden by default) -->
-    <div id="no-results" class="hidden flex-1 flex items-center justify-center p-10">
-      <p class="text-gray-400 text-center text-lg">No plants found.</p>
     </div>
-
   </section>
 
-  <!-- Toast -->
-  <div id="toast" class="hidden fixed top-5 right-5 z-[9999] px-5 py-3 rounded-2xl text-white font-semibold shadow-xl" style="background:#285A43; transition: opacity 0.3s;"></div>
+  <!-- Toast Notification -->
+  <div id="toast">Added to Cart 🛒</div>
 
   <script src="js/catalog.js"></script>
 </body>

@@ -6,14 +6,13 @@
   <title>MINI PLANT SHOP - Home</title>
 
   <!-- style.css -->
-   <link rel="stylesheet" href="style/style.css">
-   
+  <link rel="stylesheet" href="style/style.css">
+
   <!-- Tailwindcss + daisyUI -->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-
-  <!-- fontawsome -->
+  <!-- fontawesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
 </head>
 
@@ -42,6 +41,7 @@
         <li>
           <a href="cart.html" class="block ml-2 p-3 text-white hover:bg-white hover:text-green-800 rounded-l-full flex items-center gap-3">
             <i class="fa-solid fa-cart-arrow-down"></i> Cart
+            <span id="cart-badge" class="ml-auto bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
           </a>
         </li>
       </ul>
@@ -52,12 +52,15 @@
   <section class="w-full md:w-10/12 bg-white md:rounded-3xl md:mr-2 md:my-2 overflow-hidden flex flex-col min-h-screen md:min-h-0">
 
     <!-- Top Search Bar -->
-    <div class="flex items-center justify-between px-4 py-3 ">
+    <div class="flex items-center justify-between px-4 py-3 border-b relative">
       <label class="input rounded-full m-2 md:m-0 w-[75%] md:w-[80%] h-[35px] flex-1 max-w-md">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="search" placeholder="Search" id="searchInput" />
+        <input id="search-input" type="search" placeholder="Search" autocomplete="off" />
       </label>
-      <i class="fa-solid fa-user text-2xl mr-2 md:mr-4" id="userIcon"></i>
+      <i id="user-icon" class="fa-solid fa-user text-2xl mr-2 md:mr-4 cursor-pointer"></i>
+
+      <!-- Search Results Dropdown -->
+      <div id="search-results" class="hidden absolute top-[60px] left-4 right-16 bg-white border border-gray-200 rounded-2xl shadow-xl z-50 max-h-72 overflow-y-auto"></div>
     </div>
 
 
@@ -110,6 +113,10 @@
 
     </div>
   </section>
-  
+
+  <!-- Toast Notification -->
+  <div id="toast" class="hidden fixed top-5 right-5 z-[9999] px-5 py-3 rounded-2xl text-white font-semibold shadow-xl" style="background:#285A43; transition: opacity 0.3s;"></div>
+
+  <script src="js/home.js"></script>
 </body>
 </html>

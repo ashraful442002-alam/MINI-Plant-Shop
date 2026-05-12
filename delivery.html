@@ -4,11 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>MINI PLANT SHOP</title>
+  <title>MINI PLANT SHOP - Delivery</title>
 
   <!-- style.css -->
-   <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="style/style.css">
 
   <!-- Tailwind + daisyUI -->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
@@ -23,7 +22,6 @@
 
   <!-- Left Sidebar -->
   <section class="w-full md:w-2/12 bg-[#285A43]">
-
     <nav>
       <h2 class="mx-5 my-6 font-bold text-xl md:text-2xl text-white">
         MINI PLANT SHOP
@@ -41,7 +39,7 @@
 
         <li>
           <a href="delivery.html"
-            class="block ml-2 p-2 text-white hover:bg-white hover:text-green-800 rounded-l-full">
+            class="block ml-2 p-2 bg-white text-green-800 rounded-l-full font-semibold">
             <i class="fa-solid fa-truck-fast mr-2"></i>
             Delivery
           </a>
@@ -57,15 +55,15 @@
 
         <li>
           <a href="cart.html"
-            class="block ml-2 p-2 text-white hover:bg-white hover:text-green-800 rounded-l-full">
-            <i class="fa-solid fa-cart-arrow-down mr-2"></i>
+            class="block ml-2 p-2 text-white hover:bg-white hover:text-green-800 rounded-l-full flex items-center gap-2">
+            <i class="fa-solid fa-cart-arrow-down"></i>
             Cart
+            <span id="cart-badge" class="ml-auto bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
           </a>
         </li>
 
       </ul>
     </nav>
-
   </section>
 
   <!-- Right Side -->
@@ -73,42 +71,45 @@
 
     <!-- Top Search -->
     <div class="flex items-center justify-between px-2 md:px-0">
-
       <label class="input rounded-full m-2 md:m-4 w-[75%] md:w-[80%] h-[35px]">
-
         <i class="fa-solid fa-magnifying-glass"></i>
-
-        <input type="search" placeholder="Search" class="w-full" id="searchInput"/>
-
+        <input type="search" placeholder="Search" class="w-full" />
       </label>
-
       <i class="fa-solid fa-user text-xl md:text-2xl mr-2 md:mr-4"></i>
-
     </div>
 
     <!-- Hero Section -->
     <div
       class="hero w-[95%] md:w-full mx-auto h-auto md:h-5/12 flex flex-col md:flex-row justify-between rounded-2xl md:rounded-l-4xl ml-0 md:ml-4 bg-gradient-to-r from-[#8CCE6C] via-[#477D50] to-[#285A43]">
 
-      <div class="hero-info">
+      <div class="hero-info w-full">
 
-        <h1 class="hero-title m-0 pl-4 text-2xl md:text-3xl font-extrabold text-white">
+        <h1 class="hero-title m-0 pl-4 pt-4 text-2xl md:text-3xl font-extrabold text-white">
           Delivery<br>anywhere
         </h1>
 
-        <div>
-
-          <label class="input m-4 w-[90%] md:w-[80%] h-[40px]">
-
+        <div class="relative">
+          <!-- Address Input -->
+          <label class="input m-4 w-[90%] md:w-[80%] h-[40px] flex items-center">
             <input
+              id="address-input"
               type="text"
-              placeholder="Enter Your Address" id="locationInput"
-               />
-
+              placeholder="Enter Your Address"
+              autocomplete="off"
+              class="w-full bg-transparent outline-none" />
             <i class="fa-solid fa-magnifying-glass"></i>
-
           </label>
 
+          <!-- City Dropdown -->
+          <div id="city-dropdown"
+            class="hidden absolute left-4 right-4 md:right-auto md:w-[80%] bg-white rounded-2xl shadow-2xl z-50 overflow-hidden border border-gray-100">
+          </div>
+        </div>
+
+        <!-- Selected Location Display -->
+        <div id="selected-location" class="hidden mx-4 mb-4 flex items-center gap-2 text-white text-sm font-medium">
+          <i class="fa-solid fa-location-dot text-green-200"></i>
+          <span id="selected-location-text"></span>
         </div>
 
       </div>
@@ -116,8 +117,11 @@
     </div>
 
   </section>
-  
 
+  <!-- Toast -->
+  <div id="toast" class="hidden fixed top-5 right-5 z-[9999] px-5 py-3 rounded-2xl text-white font-semibold shadow-xl" style="background:#285A43; transition: opacity 0.3s;"></div>
+
+  <script src="js/delivery.js"></script>
 </body>
 
 </html>

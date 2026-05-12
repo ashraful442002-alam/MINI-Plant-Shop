@@ -1,87 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MINI PLANT SHOP</title>
-
-  <!-- style.css -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Tailwind + daisyUI -->
+  <title>MINI PLANT SHOP - Cart</title>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  <link rel="stylesheet" href="style/style.css" />
 </head>
-
-<body class="bg-[#285A43] h-screen flex justify-end ">
-
-  <!-- Left Side -->
-  <section class="w-2/12 bg-[#285A43]">
-
+<body class="bg-[#285A43] min-h-screen flex flex-col md:flex-row">
+  
+  <!-- Left Sidebar (Same as your base) -->
+  <section class="w-full md:w-2/12 bg-[#285A43] md:min-h-screen">
     <nav>
       <h2 class="mx-5 my-6 font-bold text-2xl text-white">MINI PLANT SHOP</h2>
-
-      <ul>
+      <ul class="space-y-2">
         <li>
-          <a href="home.html"
-            class="nav-link active block ml-2 p-2 text-white hover:bg-white hover:text-green-800 rounded-l-full">
-            <i class="fa-regular fa-house"></i>
-            Home
+          <a href="home.html" class="block ml-2 p-3 text-white hover:bg-white hover:text-green-800 rounded-l-full flex items-center gap-3">
+            <i class="fa-regular fa-house"></i> Home
           </a>
         </li>
         <li>
-          <a href="delivery.html"
-            class="nav-link block ml-2 p-2 text-white hover:bg-white hover:text-green-800 rounded-l-full">
-            <i class="fa-solid fa-truck-fast"></i>
-            Delivery
+          <a href="delivery.html" class="block ml-2 p-3 text-white hover:bg-white hover:text-green-800 rounded-l-full flex items-center gap-3">
+            <i class="fa-solid fa-truck-fast"></i> Delivery
           </a>
         </li>
         <li>
-          <a href="catalog.html"
-            class="nav-link block ml-2 p-2 text-white hover:bg-white hover:text-green-800 rounded-l-full">
+          <a href="catalog.html" class="block ml-2 p-3 text-white hover:bg-white hover:text-green-800 rounded-l-full flex items-center gap-3">
             <i class="fa-regular fa-rectangle-list"></i> Catalog
           </a>
         </li>
         <li>
-          <a href="cart.html"
-            class="nav-link block ml-2 p-2 text-white hover:bg-white hover:text-green-800 rounded-l-full">
+          <a href="cart.html" class="block ml-2 p-3 bg-white text-[#285A43] rounded-l-full flex items-center gap-3 font-semibold">
             <i class="fa-solid fa-cart-arrow-down"></i> Cart
           </a>
         </li>
       </ul>
-
-
     </nav>
-
-
-
-
   </section>
 
-  <!-- Right Side -->
-  <section class="w-10/12 h-[calc(100vh-24px)] bg-white my-2 mr-2 rounded-3xl overflow-hidden">
+  <!-- Main Content - White Section (Base Design) -->
+  <section class="w-full md:w-10/12 bg-white md:rounded-3xl md:mr-2 md:my-2 overflow-hidden flex flex-col">
 
-    <div>
-      <label class="input rounded-full p- m-4 w-[80%] h-[30px]"><i class="fa-solid fa-magnifying-glass"></i>
-
+    <!-- Top Search Bar (Same as your other pages) -->
+    <div class="flex items-center justify-between px-4 py-3 ">
+      <label class="input rounded-full m-2 md:m-0 w-[75%] md:w-[80%] h-[35px] flex-1 max-w-md">
+        <i class="fa-solid fa-magnifying-glass"></i>
         <input type="search" placeholder="Search" />
       </label>
-      <i class="fa-solid fa-user pl-8"></i>
+      <i class="fa-solid fa-user text-2xl mr-4"></i>
     </div>
 
-      <h2>cart
-        
-      </h2>
+    <!-- Page Title -->
+    <div class="px-6 py-4">
+      <h1 class="text-2xl font-bold text-[#285A43]">Checkout</h1>
+    </div>
+
+    <!-- Progress Steps -->
+    <div class="px-6 pb-6">
+      <div class="flex items-center gap-3 text-sm">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-green-600 text-white flex items-center justify-center text-xs font-bold">1</span>
+          <span>Account</span>
+        </div>
+        <div class="flex-1 h-px bg-green-600"></div>
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-green-600 text-white flex items-center justify-center text-xs font-bold">2</span>
+          <span>Shipping</span>
+        </div>
+        <div class="flex-1 h-px bg-green-600"></div>
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-green-600 text-white flex items-center justify-center text-xs font-bold">3</span>
+          <span class="font-semibold text-green-700">Payment</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-1 p-6 md:p-8 overflow-auto">
+      <div class="grid md:grid-cols-5 gap-8">
+
+        <!-- Payment Details Form -->
+        <div class="md:col-span-3">
+          <h2 class="text-xl font-semibold mb-6">Payment Details</h2>
+
+          <div class="space-y-6">
+            <div>
+              <label class="text-sm font-medium mb-2 block">Use saved card</label>
+              <select class="select select-bordered w-full bg-green-50">
+                <option>Mastercard ending 234</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="text-sm font-medium mb-2 block">Name on card</label>
+              <input type="text" value="John Smith" class="input input-bordered w-full bg-green-50" />
+            </div>
+
+            <div>
+              <label class="text-sm font-medium mb-2 block">Card number</label>
+              <input type="text" value="1234 5678 9012 3456" class="input input-bordered w-full bg-green-50" />
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="text-sm font-medium mb-2 block">Expiration</label>
+                <div class="flex gap-3">
+                  <input type="text" value="03" class="input input-bordered w-20 text-center bg-green-50" />
+                  <span class="flex items-center">/</span>
+                  <input type="text" value="24" class="input input-bordered w-20 text-center bg-green-50" />
+                </div>
+              </div>
+              <div>
+                <label class="text-sm font-medium mb-2 block">CVC</label>
+                <input type="text" value="123" class="input input-bordered w-28 bg-green-50" />
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10 flex gap-4">
+            <button onclick="history.back()" class="flex-1 btn btn-outline">
+              Cancel Order
+            </button>
+            <button onclick="alert('🎉 Order Completed Successfully!')" 
+                    class="flex-1 btn bg-[#285A43] text-white hover:bg-[#1f4634]">
+              Complete Order
+            </button>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="md:col-span-2 bg-[#285A43] text-white rounded-3xl p-6 h-fit">
+          <h3 class="text-lg font-semibold mb-5">Order Summary</h3>
+          
+          <div class="space-y-5">
+            <div class="flex gap-4 bg-white/10 p-3 rounded-2xl">
+              <img src="asset/cactus.jpg" alt="Cactus" class="img w-16 h-16 object-cover rounded-xl" />
+              <div class="flex-1">
+                <h4 class="font-medium">Cactus Plant</h4>
+                <p class="text-green-300">$8.00</p>
+                <div class="flex items-center gap-3 mt-2">
+                  <button class="w-6 h-6 rounded bg-white/20 hover:bg-white/30 flex items-center justify-center text-sm">-</button>
+                  <span class="font-medium w-6 text-center">1</span>
+                  <button class="w-6 h-6 rounded bg-white/20 hover:bg-white/30 flex items-center justify-center text-sm">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 space-y-3 text-sm">
+            <div class="flex justify-between">
+              <span>Sub total</span>
+              <span>$18.00</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Tax</span>
+              <span>$1.00</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Shipping</span>
+              <span class="text-green-400">Free</span>
+            </div>
+          </div>
+
+          <div class="border-t border-white/30 my-5"></div>
+
+          <div class="flex justify-between text-lg font-semibold">
+            <span>Total</span>
+            <span>$19.00</span>
+          </div>
+          <p class="text-xs text-green-300">3 items</p>
+
+          <button class="mt-6 w-full btn bg-white text-[#285A43] hover:bg-green-100">
+            Apply Discount Code
+          </button>
+        </div>
+
+      </div>
+    </div>
   </section>
-
 </body>
-
 </html>

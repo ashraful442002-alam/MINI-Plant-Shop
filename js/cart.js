@@ -311,7 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
     discountBtn.addEventListener("click", () => {
 
       showToast(
-        "🏷️ No discount codes available right now."
+        " No discount codes available right now."
       );
 
     });
